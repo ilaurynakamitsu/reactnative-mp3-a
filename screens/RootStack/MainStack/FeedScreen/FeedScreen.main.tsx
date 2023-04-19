@@ -7,18 +7,16 @@ import { SocialModel } from "../../../../models/social.js";
 import { styles } from "./FeedScreen.styles";
 import { StackNavigationProp } from "@react-navigation/stack";
 import { MainStackParamList } from "../MainStackScreen.js";
-import { getFileObjectAsync, uuid } from "../../../Utils";
+// import { getFileObjectAsync, uuid } from "../../../Utils";
 import { doc, onSnapshot, query, getFirestore, orderBy, collection } from "firebase/firestore";
 
 
 /* HOW TYPESCRIPT WORKS WITH PROPS:
-
   Remember the navigation-related props from Project 2? They were called `route` and `navigation`,
   and they were passed into our screen components by React Navigation automatically.  We accessed parameters 
   passed to screens through `route.params` , and navigated to screens using `navigation.navigate(...)` and 
   `navigation.goBack()`. In this project, we explicitly define the types of these props at the top of 
   each screen component.
-
   Now, whenever we type `navigation.`, our code editor will know exactly what we can do with that object, 
   and it'll suggest `.goBack()` as an option. It'll also tell us when we're trying to do something 
   that isn't supported by React Navigation! */
@@ -50,7 +48,6 @@ export default function FeedScreen({ navigation }: Props) {
       3. You'll probably want to use the .orderBy method to order by a particular key.
       4. It's probably wise to make sure you can create new socials before trying to 
           load socials on this screen.
-
       ADDED!!!
   */
 
@@ -67,7 +64,7 @@ export default function FeedScreen({ navigation }: Props) {
       }
     );
     return unsububscribe;
-  }, [socialmodels]);
+  }, []);
           
 
 

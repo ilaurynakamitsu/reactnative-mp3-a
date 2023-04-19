@@ -31,7 +31,6 @@ export default function NewSocialScreen({ navigation }: Props) {
            that you need to keep track of on this screen.
     
      HINTS:
-
       1. There are five core attributes that are related to the social object.
       2. There are two attributes from the Date Picker.
       3. There is one attribute from the Snackbar.
@@ -88,12 +87,24 @@ export default function NewSocialScreen({ navigation }: Props) {
 
   const handleConfirm = (date: Date) => {
 
-    let currentMonth = date.getMonth() + 1
-    let currentDate = date.getDate()
-    let sdate = date.getFullYear()+"-" +currentMonth + "-" + currentDate 
+    // let currentMonth = date.getMonth() + 1
+    // let currentDate = date.getDate()
+    // let sdate = date.getFullYear()+"-" +currentMonth + "-" + currentDate 
     
-    setDate(sdate)
+    // setDate(sdate)
+    // hideDatePicker();
+
+    const newDate = new Intl.DateTimeFormat("en-US", {
+      minute: '2-digit',
+      hour: '2-digit',
+      second: '2-digit',
+      day: '2-digit',
+      month: '2-digit',
+      year: '2-digit',
+    }).format(date);
+    setDate(newDate.toString());
     hideDatePicker();
+  
   };
 
   
@@ -136,7 +147,7 @@ export default function NewSocialScreen({ navigation }: Props) {
       
       // (4) If nothing threw an error, then go back to the previous screen.
       //     Otherwise, show an error.
-      
+      setLoading(true)
       //0
       const object: any = await getFileObjectAsync(eventpicture);
       //1
@@ -151,7 +162,7 @@ export default function NewSocialScreen({ navigation }: Props) {
       const socialRef = collection(db, "socials");
       const socialDoc: SocialModel = {
         eventName: eventname,
-        eventDate: Number(eventdate),
+        eventDate: eventdate,
         eventLocation: eventloco,
         eventDescription: eventdescription,
         eventImage: downloadURL,

@@ -116,4 +116,17 @@ const thePlaceWhereWeUseIt = () => {
     .catch((e) => {
       console.log("our async function threw an error:", e);
     });
-};
+
+//     const handleConfirm = (date: Date) => {
+//       const newDate = new Intl.DateTimeFormat("en-US", {
+//         minute: '2-digit',
+//         hour: '2-digit',
+//         second: '2-digit',
+//         day: '2-digit',
+//         month: '2-digit',
+//         year: '2-digit',
+//       }).format(date);
+//       setDate(newDate.toString());
+//       hideDatePicker();
+//     };
+// };
